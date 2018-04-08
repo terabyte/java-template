@@ -1,0 +1,46 @@
+// all java projects need the java plugin for gradle
+apply plugin: 'java'
+// allow us to easily run and distribute our application
+apply plugin: 'application'
+
+// These let you generate project files
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+
+// this is the default, putting it here to be explicit - this uses maven.org for dependency resolution
+repositories {
+    mavenCentral()
+}
+
+// this block lets us add dependencies
+dependencies {
+    // Guava is a large helper library produced by Google.  It contains useful
+    // immutable container classes, sorting, convenience APIs, I/O and
+    // conversion helpers, just a TON of stuff... don't write Java without it.
+    // https://www.tutorialspoint.com/guava/index.htm
+    compile 'com.google.guava:guava:24.1-jre'
+    // Apache commons-lang includes a ton of super useful stuff, like the Pair
+    // class.
+    compile 'org.apache.commons:commons-lang3:3.7'
+    // junit is the gold standard for testing in Java.  "testCompile" means it
+    // is only a dependency for test code.
+    // http://www.vogella.com/tutorials/JUnit/article.html
+    testCompile 'junit:junit:4.12'
+    // Mockito is an essential testing library, it makes testing your code way
+    // easier.  You probably want to use this.
+    // http://site.mockito.org/
+    testCompile 'org.mockito:mockito-core:2.18.0'
+}
+
+// this is the version of your project, bump it when you are doing releases.
+version = '0.1'
+
+// here is some java specific stuff
+
+// ensure our outputs work with java 1.8+.  Otherwise, users would need to
+// upgrade to whatever version of java you have.
+sourceCompatibility = 1.8
+
+// This is how we specify to the application plugin which class it should run.
+// It will run the class's public static void main function.
+mainClassName = "org.cmyers.Main"

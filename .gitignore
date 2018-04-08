@@ -1,0 +1,11 @@
+# build output
+build/
+out/
+.gradle/
+
+# eclipse project files
+.classpath
+.settings/
+
+# idea project files
+java-template.*
